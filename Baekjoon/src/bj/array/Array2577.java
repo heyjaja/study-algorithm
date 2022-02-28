@@ -1,6 +1,5 @@
 package bj.array;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Array2577 {
