@@ -14,29 +14,29 @@ public class Function4673 {
   static void selfNum() {
     List<Integer> list = new ArrayList<Integer>();
     
-    for(int i=1; i<=10000; i++) {
+    for(int i=1; i<=10000; i++) { // 10000보다 작거나 같은 수 중 생성자를 가진 수 구하기
       int a=getNum(i);
-      list.add(a);
+      list.add(a); // 생성자를 가진 수를 list에 저장
     }
     
-    Collections.sort(list);
+    Collections.sort(list); // 검색할 때 편하도록 정렬
     
     for(int i=1; i<=10000; i++) {
-      boolean s=true;
+      boolean s=true; // 존재여부를 확인하기 위한 변수
       for(int j : list) {
         if(i==j) {
           s=false;
           break;
         }
       }
-      if(s)
+      if(s) // list에서 찾을 수 없으면 출력
         System.out.println(i);
     }
   }
   
-  static int getNum(int i) {
+  static int getNum(int i) { //d(i)값을 구하는 메서드
     int ans = i;
-    while(i>0) {
+    while(i>0) { // 각 자리수를 더한다
       ans += i%10;
       i /= 10;
     }
