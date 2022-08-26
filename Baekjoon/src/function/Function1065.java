@@ -1,4 +1,4 @@
-package bj.function;
+package function;
 
 import java.io.BufferedReader;
 import java.io.IOException;
