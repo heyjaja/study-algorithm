@@ -1,4 +1,4 @@
-package basic;
+package basic.c1;
 
 public class MaxMin {
 
