@@ -9,7 +9,7 @@ public class SumFor {
     return (int)((1+n)*(n/2.0));
   }
   
-  static int sumof(int a, int b) {
+  static int sumOf(int a, int b) {
     int atoB;
     if(a > b) {
       atoB = a - b + 1;
@@ -43,7 +43,7 @@ public class SumFor {
     System.out.print("b: ");
     int b = sc.nextInt();
     
-    System.out.println("a부터 b까지 모든 정수의 합: "+ sumof(a, b));
+    System.out.println("a부터 b까지 모든 정수의 합: "+ sumOf(a, b));
     
   }
 
