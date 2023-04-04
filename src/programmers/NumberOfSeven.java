@@ -16,12 +16,8 @@ public class NumberOfSeven {
     }
 
     public static void main(String[] args) {
-        int[] a = {7, 77, 17};
-        int[] b = {10, 20};
-        int[] c = {17017, 0, 23377, 7, 19872, 0};
-
-        System.out.println(solution(a));
-        System.out.println(solution(b));
-        System.out.println(solution(c));
+        System.out.println(solution(new int[]{7, 77, 17}));
+        System.out.println(solution(new int[]{10, 20}));
+        System.out.println(solution(new int[]{17017, 0, 23377, 7, 19872, 0}));
     }
 }
