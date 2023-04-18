@@ -65,6 +65,14 @@ public class BasicArray {
         return answer;
     }
 
+    public int[] solution(String my_string) {
+        int[] answer = {};
+
+        my_string = my_string.replaceAll("[a-z]", "");
+        answer = my_string.chars().map(c -> c - 48).sorted().toArray();
+        return answer;
+    }
+
     public static void main(String[] args) {
         BasicArray ba = new BasicArray();
         System.out.println(ba.calString("3 + 4 + 11"));
