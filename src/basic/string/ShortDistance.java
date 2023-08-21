@@ -10,7 +10,7 @@ public class ShortDistance {
         // 거리 기준
         int p = length;
 
-        // 왼쪽 기준으로 비교
+        // 왼쪽 -> 오른쪽으로 비교
         for(int i = 0; i < length; i++) {
             if(s.charAt(i) == c) {
                 p = 0;
@@ -21,7 +21,7 @@ public class ShortDistance {
         }
 
         p = length;
-        // 오른쪽 기준으로 비교하여 더 작은 값
+        // 오른쪽 -> 왼쪽으로 비교하여 더 작은 값
         for(int i = length-1; i >=0; i--) {
             if(s.charAt(i) == c) {
                 p = 0;
