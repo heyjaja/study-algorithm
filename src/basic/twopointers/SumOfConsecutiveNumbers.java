@@ -1,7 +1,5 @@
 package twopointers;
 
-import array.Fibonacci;
-
 import java.util.Scanner;
 
 public class SumOfConsecutiveNumbers {
