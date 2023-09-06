@@ -10,7 +10,7 @@ public class RemoveParenthesesText {
 
         for(char c : a.toCharArray()) {
             if(c == ')') {
-                while(stack.pop() == '(');
+                while(stack.pop() != '(');
             } else {
                 stack.push(c);
             }
