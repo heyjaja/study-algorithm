@@ -1,4 +1,4 @@
-package twopointers.slidingwindow;
+package twopointers;
 
 import java.util.Scanner;
 
