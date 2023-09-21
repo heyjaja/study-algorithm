@@ -10,7 +10,8 @@ public class Subset {
             StringBuilder sb = new StringBuilder();
             for(int i=1; i<ch.length; i++) {
                 if(ch[i]) {
-                    sb.append(i+ " ");
+                    sb.append(i);
+                    sb.append(" ");
                 }
             }
             // 공집합 제외
