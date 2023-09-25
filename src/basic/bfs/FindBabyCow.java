@@ -40,10 +40,10 @@ public class FindBabyCow {
             int length = q.size();
             for(int i=0; i<length; i++) {
                 int n = q.poll();
-                for(int j=0; j<steps.length; j++) {
-                    int x = n + steps[j];
-                    if(x == e) return answer + 1;
-                    if(x >= 1 && x <= 10000 && !check[x]) {
+                for (int step : steps) {
+                    int x = n + step;
+                    if (x == e) return answer + 1;
+                    if (x >= 1 && x <= 10000 && !check[x]) {
                         check[x] = true;
                         q.offer(x);
                     }
