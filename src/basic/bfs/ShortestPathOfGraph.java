@@ -6,7 +6,7 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class ShortestPathOfGraph {
-    static int n, m, answer = 0;
+    static int n, m = 0;
     static ArrayList<ArrayList<Integer>> graph;
     static boolean[] check;
     static int[] distance;
