@@ -1,6 +1,19 @@
 package dfs;
 
+import bfs.FindShortestPathOfLastNode;
+
 public class BinaryTree {
+    static class Node {
+        int value;
+        Node left; // 왼쪽 자식
+        Node right; // 오른쪽 자식
+
+        public Node(int val) {
+            value = val;
+            left = null;
+            right = null;
+        }
+    }
     Node root;
     public void DFS(Node root) {
         if(root == null) return;
