@@ -1,7 +1,5 @@
 package dfs;
 
-import bfs.FindShortestPathOfLastNode;
-
 public class BinaryTree {
     static class Node {
         int value;
