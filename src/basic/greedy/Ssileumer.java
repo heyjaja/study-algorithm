@@ -2,36 +2,34 @@ package greedy;
 
 import java.util.Arrays;
 import java.util.Scanner;
+class Applicant implements Comparable<Applicant> {
+    int height;
+    int weight;
 
-public class Ssileumer {
-
-    static class Applicant implements Comparable<Applicant> {
-        int height;
-        int weight;
-
-        public Applicant(int height, int weight) {
-            this.height = height;
-            this.weight = weight;
-        }
-
-        @Override
-        public String toString() {
-            return "A[h=" + height + ", w=" + weight + "]";
-        }
-
-        @Override
-        public int compareTo(Applicant o) {
-            if(height > o.height) {
-                return -1;
-            }
-
-            if(height < o.height) {
-                return 1;
-            }
-            return 0;
-        }
+    public Applicant(int height, int weight) {
+        this.height = height;
+        this.weight = weight;
     }
 
+    @Override
+    public String toString() {
+        return "A[h=" + height + ", w=" + weight + "]";
+    }
+
+    @Override
+    public int compareTo(Applicant o) {
+        if(height > o.height) {
+            return -1;
+        }
+
+        if(height < o.height) {
+            return 1;
+        }
+        return 0;
+    }
+}
+
+public class Ssileumer {
     private int solution(Applicant[] applicants) {
         // 이중 포문은 시간 초과 O(n2)
         // 키 내림차순으로 정렬하여 몸무게만 비교
