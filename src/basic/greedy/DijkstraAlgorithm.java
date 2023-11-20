@@ -86,7 +86,7 @@ public class DijkstraAlgorithm {
 
         for(int i=2; i<=n; i++) {
             String value = distance[i] == Integer.MAX_VALUE
-                    ? "impossible" : distance[i] + "";
+                    ? "impossible" : String.valueOf(distance[i]);
 
             System.out.println(i + ": "+value);
         }
