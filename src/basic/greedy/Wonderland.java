@@ -46,8 +46,8 @@ public class Wonderland {
 
         ArrayList<Road> roads = new ArrayList<>();
 
-        for(int i=0; i<arr.length; i++) {
-            roads.add(new Road(arr[i][0], arr[i][1], arr[i][2]));
+        for(int[] a : arr) {
+            roads.add(new Road(a[0], a[1], a[2]));
         }
 
         Collections.sort(roads);
@@ -98,10 +98,10 @@ public class Wonderland {
             graph.add(new ArrayList<>());
         }
 
-        for(int i=0; i<arr.length; i++) {
-            int a = arr[i][0];
-            int b = arr[i][1];
-            int c = arr[i][2];
+        for(int[] ints : arr) {
+            int a = ints[0];
+            int b = ints[1];
+            int c = ints[2];
             // 인접리스트는 양방향으로
             graph.get(a).add(new Node(b, c));
             graph.get(b).add(new Node(a, c));
