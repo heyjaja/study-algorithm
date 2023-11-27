@@ -2,6 +2,7 @@ package greedy;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.PriorityQueue;
 import java.util.Scanner;
 
 class Road implements Comparable<Road> {
@@ -17,15 +18,7 @@ class Road implements Comparable<Road> {
 
     @Override
     public int compareTo(Road o) {
-        if(cost < o.cost) {
-            return -1;
-        }
-
-        if(cost > o.cost) {
-            return 1;
-        }
-
-        return 0;
+        return Integer.compare(cost, o.cost);
     }
 }
 
@@ -48,7 +41,7 @@ public class Wonderland {
         return 0;
     }
 
-    public int solution(int v, int[][] arr) {
+    public int kruskal(int v, int[][] arr) {
         int answer = 0;
 
         ArrayList<Road> roads = new ArrayList<>();
@@ -89,6 +82,70 @@ public class Wonderland {
             arr[i][2] = sc.nextInt();
         }
 
-        System.out.println(main.solution(v, arr));
+        System.out.println(main.kruskal(v, arr));
+        System.out.println(main.prim(v, arr));
+    }
+
+    private int prim(int v, int[][] arr) {
+        // 프림 알고리즘
+        int answer = 0;
+
+        // 인접리스트
+        ArrayList<ArrayList<Node>> graph = new ArrayList<>();
+        boolean[] check = new boolean[v+1];
+
+        for(int i=0; i<=v; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        for(int i=0; i<arr.length; i++) {
+            int a = arr[i][0];
+            int b = arr[i][1];
+            int c = arr[i][2];
+            // 인접리스트는 양방향으로
+            graph.get(a).add(new Node(b, c));
+            graph.get(b).add(new Node(a, c));
+        }
+
+        PriorityQueue<Node> pq = new PriorityQueue<>();
+        // 1번 정점부터 출발
+        pq.offer(new Node(1, 0));
+
+        while(!pq.isEmpty()) {
+            Node current = pq.poll();
+            int vertex = current.vertex;
+            if(check[vertex]) {
+                continue;
+            }
+            check[vertex] = true;
+            answer += current.cost;
+            for(Node node : graph.get(vertex)) {
+                // 현재 노드에서 뻗어나가는 정점 중 아직 지나지 않은 정점
+                if(!check[node.vertex]) {
+                    pq.offer(new Node(node.vertex, node.cost));
+                }
+            }
+        }
+        return answer;
+    }
+}
+
+class Node implements Comparable<Node> {
+    int vertex;
+    int cost;
+
+    public Node(int vertex, int cost) {
+        this.vertex = vertex;
+        this.cost = cost;
+    }
+
+    @Override
+    public int compareTo(Node o) {
+        return Integer.compare(cost, o.cost);
+    }
+
+    @Override
+    public String toString() {
+        return "("+ vertex +", " + cost + ")";
     }
 }
