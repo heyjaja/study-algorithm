@@ -2,13 +2,13 @@ package dp;
 
 import java.util.Scanner;
 
-public class Step {
+public class Stairs {
 
     public static void main(String[] args) {
         // 계단오르기
         // 한번에 한 계단 또는 두 계단
         // N 계단을 올라갈 수 있는 경우의 수
-        Step main = new Step();
+        Stairs main = new Stairs();
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt();
