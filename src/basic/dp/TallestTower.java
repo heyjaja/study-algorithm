@@ -55,6 +55,7 @@ public class TallestTower {
         int[] dynamic = new int[n];
         Arrays.sort(bricks);
 
+        // 정렬을 하지 않으면 입력순으로 앞의 벽돌만 비교하게 된다.
         for(int i=0; i<n; i++) {
             dynamic[i] = bricks[i].height;
             for(int j=0; j<i; j++) {
