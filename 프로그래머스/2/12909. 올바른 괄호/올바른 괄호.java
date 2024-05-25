@@ -5,12 +5,13 @@ class Solution {
         Stack<Character> stack = new Stack<>();
         
         for(char c : s.toCharArray()) {
-            if(stack.isEmpty() || c == '(') {
+            if(c == '(') {
                 stack.push(c);
-            } else if(stack.peek() == '(') {
-                stack.pop();
             } else {
-                return false;
+                if(stack.isEmpty()) {
+                    return false;
+                }
+                stack.pop();
             }
         }
 
