@@ -6,18 +6,13 @@ class Solution {
         
         for(char c : s.toCharArray()) {
             if(stack.isEmpty() || c == '(') {
-                
                 if(c == '(') {
                     stack.push(c);
-                    continue;
                 } else {
                     return false;
                 }
-            }
-            
-            if(stack.peek() == '(') {
+            } else if(stack.peek() == '(') {
                 stack.pop();
-                continue;
             } else {
                 return false;
             }
