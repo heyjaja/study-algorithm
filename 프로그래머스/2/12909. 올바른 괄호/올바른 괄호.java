@@ -6,11 +6,7 @@ class Solution {
         
         for(char c : s.toCharArray()) {
             if(stack.isEmpty() || c == '(') {
-                if(c == '(') {
-                    stack.push(c);
-                } else {
-                    return false;
-                }
+                stack.push(c);
             } else if(stack.peek() == '(') {
                 stack.pop();
             } else {
