@@ -5,16 +5,9 @@ public class Solution {
         Stack<Integer> stack = new Stack<>();
         
         for(int i : arr) {
-            if(stack.isEmpty()) {
+            if(stack.isEmpty() || stack.peek() != i) {
                 stack.push(i);
-                continue;
-            } 
-            
-            if(stack.peek() == i) {
-                continue;
             }
-            
-            stack.push(i);
         }
 
         return stack;
