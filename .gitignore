@@ -1,0 +1,10 @@
+.metadata/
+.DS_Store
+*.class
+.project
+.classpath
+.settings/
+bin/
+.prefs
+test/
+.idea/
