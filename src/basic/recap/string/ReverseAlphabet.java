@@ -1,4 +1,4 @@
-package lonely.string;
+package recap.string;
 
 import java.util.Scanner;
 
