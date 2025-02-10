@@ -29,8 +29,8 @@ public class YMD {
 
         int year = y, month = m;
 
-        while(day > getDays(month)) {
-            day -= getDays(month);
+        while(day > getDays(year, month)) {
+            day -= getDays(year, month);
 
             // 그럼 m++ 12 넘으면, y++
             month += 1;
@@ -43,8 +43,8 @@ public class YMD {
         return new YMD(year, month, day);
     }
 
-    private int isLeap() {
-        return y % 4 == 0 && (y % 100 != 0 || y % 400 == 0) ? 1 : 0;
+    private int isLeap(int y) {
+        return (y % 4 == 0 && (y % 100 != 0 || y % 400 == 0)) ? 1 : 0;
     }
 
     public YMD before(int n) {
@@ -56,7 +56,6 @@ public class YMD {
         int day = d - n;
         int year = y, month = m;
         while(day < 1) {
-            day += getDays(month - 1);
             month -= 1;
 
             // 이전 달이 0이면 12월로 y--
@@ -64,6 +63,9 @@ public class YMD {
                 month = 12;
                 year -= 1;
             }
+
+            day += getDays(year, month);
+
         }
 
 
@@ -71,8 +73,8 @@ public class YMD {
         return new YMD(year,month,day);
     }
 
-    private int getDays(int m) {
-        return m >=1 ? days[isLeap()][m-1] : days[isLeap()][days.length-1];
+    private int getDays(int y, int m) {
+        return m >=1 ? days[isLeap(y)][m-1] : days[isLeap(y)][days.length-1];
     }
 
     @Override
