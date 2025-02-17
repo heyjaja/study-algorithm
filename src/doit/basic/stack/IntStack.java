@@ -1,4 +1,4 @@
-package basic.c4;
+package basic.stack;
 
 import java.util.Scanner;
 
@@ -101,7 +101,7 @@ public class IntStack {
         while(true) {
             System.out.println("==============================");
             System.out.println("현재 데이터 수: " + s.size() + " / " + s.capacity());
-            System.out.print("1.푸시 2.팝 3.피크 4.덤프 0.종료 > ");
+            System.out.print("1.푸시 2.팝 3.피크 4.덤프 5.검색 6.비우기 0.종료 > ");
 
             int menu = sc.nextInt();
             if(menu == 0) break;
@@ -139,6 +139,22 @@ public class IntStack {
 
                 case 4:
                     s.dump();
+                    break;
+
+                case 5:
+                    System.out.print("데이터: ");
+                    x = sc.nextInt();
+                    int index = s.indexOf(x) + 1;
+
+                    if(index > 0) {
+                        System.out.println("위치: " + index);
+                    } else {
+                        System.out.println(x + "는 존재하지 않습니다.");
+                    }
+                    break;
+
+                case 6:
+                    s.clear();
                     break;
             }
         }
