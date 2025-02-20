@@ -14,6 +14,7 @@ public class EuclidGCD {
     }
 
     static int gcd2(int x, int y) {
+        // 재귀 사용 하지 않고
         while(y != 0) {
             int temp = y;
             y = x % y;
@@ -24,6 +25,7 @@ public class EuclidGCD {
     }
 
     static int gcd3(int[] arr) {
+        // 배열의 최대 공약수
         int a = arr[0];
 
         for(int i=0; i<arr.length - 1; i++) {
