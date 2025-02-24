@@ -12,13 +12,18 @@ public class Recur {
         System.out.print("정수를 입력하세요: ");
         int x = sc.nextInt();
 
+        System.out.println("recur()");
         recur(x);
-        System.out.println();
+        System.out.println("\nrecur2()");
         recur2(x);
-        System.out.println();
+        System.out.println("\nrecur3()");
         recur3(x);
-        System.out.println();
+        System.out.println("\nrecur4()");
         recur4(x);
+        System.out.println("\nrecur5()");
+        recur5(x);
+        System.out.println("\nrecur6()");
+        recur6(x);
     }
 
     private static void recur(int n) {
@@ -55,7 +60,7 @@ public class Recur {
                 n = n-1;
                 continue;
             }
-            if(!stack.isEmpty()) { // 4->3->2 1 pop! 4->3 2 pop! 4 3 pop! 4 1 pop! 4 pop! 2 1 pop! 2 pop!
+            if(!stack.isEmpty()) { // 4->3->2 1 pop! 4->3 2 pop! 4 3 pop!, 4 1 pop! 4 pop!, 2 1 pop! 2 pop!
                 n = stack.pop(); // n <= 0이 되면 저장한 n 값을 pop
                 System.out.print(n + " ");
                 n = n-2; // n-2 값을 다시 stack에 저장
@@ -63,5 +68,17 @@ public class Recur {
             }
             break;
         }
+    }
+
+    private static void recur5(int n) {
+        if(n>0) {
+            recur5(n-1);
+            recur5(n-2);
+            System.out.print(n + " ");
+        }
+    }
+
+    private static void recur6(int n) {
+        // recur5를 비재귀적으로 구현하기
     }
 }
