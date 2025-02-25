@@ -3,6 +3,7 @@ package basic.recursive;
 import basic.stack.IntStack;
 
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Recur {
 
@@ -80,5 +81,30 @@ public class Recur {
 
     private static void recur6(int n) {
         // recur5를 비재귀적으로 구현하기
+        Stack<Integer> intStack = new Stack<>();
+        Stack<Integer> flagStack = new Stack<>(); // 처리가 완료된 상태 1, 처리 전 상태 0
+        intStack.push(n); // 첫 번째 요소 저장
+        flagStack.push(0); // 처리 전
+
+        while(!intStack.isEmpty()) {
+            int a = intStack.pop(); // 요소 pop
+            int flag = flagStack.pop(); // 처리 상태 pop
+
+            if(a > 0) {
+                if(flag > 0) { // 처리 상태면 출력
+                    System.out.print(a + " ");
+                    continue;
+                }
+
+                intStack.push(a); // 마지막 처리 완료 상태 먼저
+                flagStack.push(1);
+
+                intStack.push(a-2); // 두번째 처리 요소
+                flagStack.push(0);
+
+                intStack.push(a-1); // 먼저 처리할 요소
+                flagStack.push(0);
+            }
+        }
     }
 }
