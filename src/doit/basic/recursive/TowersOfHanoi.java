@@ -5,9 +5,9 @@ import java.util.Stack;
 
 public class TowersOfHanoi {
     // 하노이의 탑
-    // 목표 기둥으로 원반을 옮긴다
-    // 그룹을 지어 옮길 수 있고, 작은 원반 위에 큰 원반이 위치할 수 없다
-    // 목표 기둥으로 원반을 옮기는 데 몇번을 옮겨야 하는지 구하기
+    // 시작 기둥에서 목표 기둥으로 원반을 옮긴다
+    // 작은 원반 위에 큰 원반이 위치할 수 없다
+    // 목표 기둥으로 원반을 옮기는 과정 구하기
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -21,12 +21,12 @@ public class TowersOfHanoi {
     private static void move(int n, int x, int y) {
         // 기둥 번호를 정수 1,2,3으로 표현하여 목표 기둥이 어느 기둥이라도 중간기둥을 6-x-y로 구할 수 있다
         if(n > 1) {
-            move(n - 1, x, 6-x-y);
+            move(n - 1, x, 6-x-y); // x 기둥의 n-1개의 원반을 경유지로 옮기기
         }
         System.out.println("원반[" + n + "]: " + x + "->" + y);
 
         if(n > 1) {
-            move(n - 1, 6-x-y, y);
+            move(n - 1, 6-x-y, y); // 경유지의 n-1개의 원반을 도착 지점으로 옮기기
         }
     }
 
