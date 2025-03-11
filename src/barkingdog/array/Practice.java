@@ -36,7 +36,7 @@ public class Practice {
         System.out.print("fuc2 = ");
         // O(N)의 풀이
         // 각 수의 등장 여부를 판단하는 배열을 선언
-        int[] occur = new int[101]; // 0 < arr[i] <= 100 -> 길이 101 배열
+        int[] occur = new int[101]; // 합이 100 이하 == 길이 101 배열
         for (int i = 0; i < n; i++) {
             if(occur[100-arr[i]] == 1) { // 현재 arr의 요소와 더해서 100이 되는 요소가 존재하는지 확인
                 return 1; // 존재하면 1
