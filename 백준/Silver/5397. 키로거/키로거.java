@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -8,24 +9,33 @@ public class Main {
 
         for(int i=0; i<n; i++) {
             String s = br.readLine();
+            LinkedList<Character> words = new LinkedList<>();
+            ListIterator<Character> cursor = words.listIterator();
+
             StringBuilder sb = new StringBuilder();
 
-            int cursor = 0;
             for (char c : s.toCharArray()) {
                 switch (c){
                     case '<':
-                        cursor = cursor > 0 ? cursor - 1 : cursor;
+                        if(cursor.hasPrevious()) cursor.previous();
                         break;
                     case '>':
-                        cursor = cursor < sb.length() ? cursor + 1 : cursor;
+                        if(cursor.hasNext()) cursor.next();
                         break;
                     case '-':
-                        if(cursor > 0) sb.deleteCharAt(--cursor);
+                        if(cursor.hasPrevious()) {
+                            cursor.previous();
+                            cursor.remove();
+                        }
                         break;
                     default:
-                        sb.insert(cursor++, c);
+                        cursor.add(c);
                         break;
                 }
+            }
+
+            for (Character word : words) {
+                sb.append(word);
             }
 
             System.out.println(sb);
