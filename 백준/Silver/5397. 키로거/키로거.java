@@ -37,9 +37,10 @@ public class Main {
             for (Character word : words) {
                 sb.append(word);
             }
+            sb.append('\n');
 
-            System.out.println(sb);
         }
+        System.out.println(sb);
     }
 
 }
