@@ -8,23 +8,24 @@ public class Main {
 
         int n = Integer.parseInt(br.readLine());
         Stack<Integer> stack = new Stack<>();
-        Queue<Integer> queue = new ArrayDeque<>();
+        int[] arr = new int[n];
 
         for(int i=0; i<n; i++) {
-            queue.offer(Integer.parseInt(br.readLine()));
+            arr[i] = Integer.parseInt(br.readLine());
         }
 
         int value = 1;
+        int index = 0;
         while(value <= n) {
-            if(stack.isEmpty() || !stack.peek().equals(queue.peek())) {
+            if(stack.isEmpty() || stack.peek() != arr[index]) {
                 stack.push(value);
                 sb.append('+').append('\n');
                 value++;
             }
 
-            while(!stack.isEmpty() && stack.peek().equals(queue.peek())) {
+            while(!stack.isEmpty() && stack.peek() == arr[index]) {
                 stack.pop();
-                queue.poll();
+                index++;
                 sb.append('-').append('\n');
             }
         }
