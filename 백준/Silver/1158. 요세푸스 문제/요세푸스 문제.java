@@ -17,17 +17,17 @@ public class Main {
 
         sb.append('<');
         while(!queue.isEmpty()) {
-            int x = 0;
-            for(int i=1; i<=k; i++) {
-                int a = queue.poll();
-                if(i == k) {
-                    x = a;
-                    break;
-                }
-                queue.offer(a);
+            for(int i=1; i<k; i++) {
+                queue.offer(queue.poll());
             }
-            sb.append(x);
-            if(!queue.isEmpty()) sb.append(", ");
+            
+            sb.append(queue.poll());
+            
+            if(queue.isEmpty()) {
+                break;
+            }
+            
+            sb.append(", ");
         }
         sb.append('>');
 
