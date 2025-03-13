@@ -1,4 +1,4 @@
-package basic.sorting;
+package doit.basic.sorting;
 
 public class InsertionSort {
 
@@ -27,14 +27,18 @@ public class InsertionSort {
 
     static void insertionSort(int[] a) {
         int n = a.length;
+        int count = 0;
         for (int i = 1; i < n; i++) { // 두 번째 요소부터 시작
             int j = i;
             int temp = a[i];
             for (; j > 0 && a[j-1] > temp; j--) { // 조건을 만족할 때
                 a[j] = a[j-1]; // 왼쪽의 요소와 교환
+                count++;
             }
             a[j] = temp;
+            count++;
         }
+        System.out.println("count = " + count);
     }
 
     static void insertionSort2(int[] a) {
