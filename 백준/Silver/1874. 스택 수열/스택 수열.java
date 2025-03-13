@@ -15,25 +15,20 @@ public class Main {
         }
 
         int value = 1;
-        int index = 0;
-        while(value <= n) {
-            if(stack.isEmpty() || stack.peek() != arr[index]) {
-                stack.push(value);
+        for(int i=0; i<n; i++) {
+            while(value <= arr[i]) {
+                stack.push(value++);
                 sb.append('+').append('\n');
-                value++;
             }
 
-            while(!stack.isEmpty() && stack.peek() == arr[index]) {
+            if(stack.peek() == arr[i]) {
                 stack.pop();
-                index++;
                 sb.append('-').append('\n');
             }
         }
-
-
+        
         if(stack.isEmpty()) System.out.println(sb);
         else System.out.println("NO");
-
 
     }
 }
