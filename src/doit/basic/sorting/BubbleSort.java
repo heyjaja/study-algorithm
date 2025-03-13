@@ -1,4 +1,4 @@
-package basic.sorting;
+package doit.basic.sorting;
 
 public class BubbleSort {
 

@@ -1,4 +1,4 @@
-package basic.array;
+package doit.basic.array;
 
 public class PrimeNumber {
 

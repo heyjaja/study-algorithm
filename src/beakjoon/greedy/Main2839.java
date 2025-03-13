@@ -1,4 +1,4 @@
-package greedy;
+package beakjoon.greedy;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package basic.array;
+package doit.basic.array;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

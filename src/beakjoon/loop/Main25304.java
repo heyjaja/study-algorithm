@@ -1,4 +1,4 @@
-package loop;
+package beakjoon.loop;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

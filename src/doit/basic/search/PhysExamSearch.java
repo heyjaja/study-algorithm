@@ -1,4 +1,4 @@
-package basic.search;
+package doit.basic.search;
 
 import java.util.Arrays;
 import java.util.Comparator;

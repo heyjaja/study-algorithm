@@ -1,4 +1,4 @@
-package basic.array;
+package doit.basic.array;
 
 import java.util.Scanner;
 

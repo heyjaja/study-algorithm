@@ -1,4 +1,4 @@
-package basic.stack;
+package doit.basic.stack;
 
 import java.util.Scanner;
 

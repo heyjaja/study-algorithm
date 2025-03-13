@@ -1,4 +1,4 @@
-package recap.twopointers;
+package basic.recap.twopointers;
 
 import java.util.Scanner;
 

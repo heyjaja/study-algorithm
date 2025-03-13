@@ -1,3 +1,5 @@
+package programmers;
+
 public class NumberOfSeven {
     public static int solution(int[] array) {
         int answer = 0;

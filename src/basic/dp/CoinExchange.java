@@ -1,4 +1,4 @@
-package dp;
+package basic.dp;
 
 import java.util.Arrays;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package basic;
+package codeup.basic;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -1,4 +1,4 @@
-package conditional;
+package beakjoon.conditional;
 
 import java.io.BufferedReader;
 import java.io.IOException;

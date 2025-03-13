@@ -1,4 +1,4 @@
-package basic.queue;
+package doit.basic.queue;
 
 import java.util.Objects;
 import java.util.Scanner;

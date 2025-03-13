@@ -1,4 +1,4 @@
-package dfs;
+package basic.dfs;
 
 public class FindShortestPathOfLastNode {
     static class Node {

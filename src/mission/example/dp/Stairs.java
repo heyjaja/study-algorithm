@@ -1,4 +1,4 @@
-package example.dp;
+package mission.example.dp;
 
 public class Stairs {
 

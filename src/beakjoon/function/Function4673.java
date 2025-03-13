@@ -1,4 +1,4 @@
-package function;
+package beakjoon.function;
 
 import java.util.ArrayList;
 import java.util.Collections;

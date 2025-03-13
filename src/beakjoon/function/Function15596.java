@@ -1,4 +1,4 @@
-package function;
+package beakjoon.function;
 
 public class Function15596 {
 // 정수 n개가 주어졌을 때 n개의 합을 구하는 함수

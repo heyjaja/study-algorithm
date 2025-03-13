@@ -1,4 +1,4 @@
-package recap.string;
+package basic.recap.string;
 
 import java.util.Arrays;
 import java.util.Scanner;

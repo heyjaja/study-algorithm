@@ -1,4 +1,4 @@
-package basic.queue;
+package doit.basic.queue;
 
 class OverflowIntQueueException extends RuntimeException {
     public OverflowIntQueueException() {

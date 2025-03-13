@@ -1,4 +1,4 @@
-package basic;
+package beakjoon.basic;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

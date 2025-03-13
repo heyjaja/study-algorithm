@@ -1,4 +1,4 @@
-package recap.hash;
+package basic.recap.hash;
 
 import java.util.*;
 

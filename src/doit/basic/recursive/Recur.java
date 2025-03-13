@@ -1,6 +1,6 @@
-package basic.recursive;
+package doit.basic.recursive;
 
-import basic.stack.IntStack;
+import doit.basic.stack.IntStack;
 
 import java.util.Scanner;
 import java.util.Stack;

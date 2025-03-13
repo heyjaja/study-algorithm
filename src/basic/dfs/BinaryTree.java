@@ -1,4 +1,4 @@
-package dfs;
+package basic.dfs;
 
 public class BinaryTree {
     static class Node {

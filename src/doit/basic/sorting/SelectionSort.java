@@ -1,4 +1,4 @@
-package basic.sorting;
+package doit.basic.sorting;
 
 public class SelectionSort {
     static void selectionSort(int[] a, int n) {

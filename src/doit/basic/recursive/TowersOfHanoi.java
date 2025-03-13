@@ -1,4 +1,4 @@
-package basic.recursive;
+package doit.basic.recursive;
 
 import java.util.Scanner;
 import java.util.Stack;

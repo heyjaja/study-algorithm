@@ -1,3 +1,5 @@
+package programmers;
+
 public class BacterialGrowth {
     public static int solution(int n, int t) {
         int answer = n;

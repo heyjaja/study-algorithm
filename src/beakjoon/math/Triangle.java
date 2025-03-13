@@ -1,4 +1,4 @@
-package math;
+package beakjoon.math;
 
 import java.util.Arrays;
 import java.util.Scanner;

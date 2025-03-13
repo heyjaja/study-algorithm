@@ -1,4 +1,4 @@
-package basic.search;
+package doit.basic.search;
 
 public class SearchIndex {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package recap.array;
+package basic.recap.array;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package basic.c1;
+package doit.basic.c1;
 
 public class Multi99Table {
 
