@@ -13,12 +13,9 @@ public class Main {
             queue.offer(i+1);
         }
 
-        int count = 1;
         while(queue.size() > 1) {
-            int card = queue.poll();
-            if(count++ % 2 == 0) {
-                queue.offer(card);
-            }
+            queue.poll();
+            queue.offer(queue.poll());
         }
 
         System.out.println(queue.poll());
