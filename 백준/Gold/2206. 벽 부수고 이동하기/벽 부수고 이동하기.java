@@ -33,10 +33,10 @@ public class Main {
                 int ny = cur.y + dy[dir];
 
                 if(nx < 0 || nx >= N || ny < 0 || ny >= M) continue;
-                if(map[nx][ny] == 0 && dis[nx][ny][cur.broken] == 0) {
+                if(map[nx][ny] == 0 && dis[nx][ny][cur.broken] == 0) { // 벽을 안부수고 이동하는 경로를 저장하니까 앞에서 벽을 안부쉈던 애가 나중에 부술 수 있음
                     q.offer(new Point(nx, ny, cur.broken));
                     dis[nx][ny][cur.broken] = dis[cur.x][cur.y][cur.broken] + 1;
-                } else if(map[nx][ny] == 1 && cur.broken == 0 && dis[nx][ny][1] == 0) {
+                } else if(map[nx][ny] == 1 && cur.broken == 0 && dis[nx][ny][1] == 0) { // 여기서 이미 벽을 부수고 또 다른 벽을 부숴야하는 상황이 오면 그냥 탈출 못하고 종료
                     q.offer(new Point(nx, ny, 1));
                     dis[nx][ny][1] = dis[cur.x][cur.y][cur.broken] + 1;
                 }
