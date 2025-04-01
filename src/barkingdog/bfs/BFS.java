@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BFS {
+    // 너비 우선 탐색
     // 0,0부터 모든 파란색 칸에 방문하기
     // 파란색: 1, 빨간색: 0
     static int[][] board = {
@@ -14,9 +15,9 @@ public class BFS {
             {0, 1, 1, 0, 1},
             {1, 0, 1, 0, 1}
     };
-    static boolean[][] vis = new boolean[5][5]; // 방문 여부 저장
+    static boolean[][] vis = new boolean[6][5]; // 방문 여부 저장
 
-    static int n = 5, m = 5; // 열과 행의 개수
+    static int n = 6, m = 5; // 열과 행의 개수
     static int[] dx = {1, 0, -1, 0}; // 아래부터 반시계방향
     static int[] dy = {0, 1, 0, -1};
 
