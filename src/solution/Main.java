@@ -5,72 +5,48 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        //https://www.acmicpc.net/problem/2206
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
         int K = Integer.parseInt(st.nextToken());
 
-        int[][] map = new int[N][M];
-        for(int i=0; i<N; i++) {
-            String s = br.readLine();
-            for (int j = 0; j < M; j++) {
-                map[i][j] = s.charAt(j) - '0';
-            }
-        }
-        int[] dx = {-1, 0, 1, 0};
-        int[] dy = {0, 1, 0, -1};
-
-        int[][][] vis = new int[K+1][N][M];
-        Queue<Point> q = new LinkedList<>();
-        vis[0][0][0] = 1;
-        q.offer(new Point(0, 0, 0, false));
-
-        while(!q.isEmpty()) {
-            Point cur = q.poll();
-            for(int i=0; i<4; i++) {
-                int nx = cur.x + dx[i];
-                int ny = cur.y + dy[i];
-
-                if(nx < 0 || nx >= N || ny < 0 || ny >= M) continue;
-                if(vis[cur.broken][nx][ny] == 0 && map[nx][ny] == 0) {
-                    vis[cur.broken][nx][ny] = vis[cur.broken][cur.x][cur.y] + 1;
-                    q.offer(new Point(nx, ny, cur.broken, !day));
-                } else if(map[nx][ny] == 1 && cur.broken < K && vis[cur.broken+1][nx][ny] == 0) {
-                    if(day) {
-                        vis[cur.broken + 1][nx][ny] = vis[cur.broken][cur.x][cur.y] + 1;
-                        q.offer(new Point(nx, ny, cur.broken+1, !day));
-                    } else {
-                        vis[cur.broken][cur.x][cur.y]++;
-                        q.offer(new Point(cur.x, cur.y, cur.broken, !day));
-                    }
-                }
-            }
-        }
-
-        int min = Integer.MAX_VALUE;
-        for (int i = 0; i<=K; i++) {
-            if(vis[i][N-1][M-1] == 0) continue;
-            min = Math.min(min, vis[i][N-1][M-1]);
-        }
-
-        System.out.println(min == Integer.MAX_VALUE ? -1 : min);
-
+        System.out.println(bfs(N, K));
     }
-}
 
-class Point {
-    int x;
-    int y;
-    int broken;
-    boolean day;
+    private static int bfs(int N, int K) {
+        int[][] vis = new int[2][500001]; // 홀수, 짝수로 나누어서 방문 표시 -> 수빈이가 +1 -1을 반복하면 같은 위치에 2초 간격(짝수, 홀수로)으로 도달. 중복을 줄이기 위함
+        for (int[] arr : vis) Arrays.fill(arr, -1);
+        Queue<Integer> q = new LinkedList<>();
+        vis[0][N] = 0; // 시작 위치 방문 표시
+        q.offer(N);
 
-    public Point(int x, int y, int broken, boolean day) {
-        this.x = x;
-        this.y = y;
-        this.broken = broken;
-        this.day = day;
+        int t = 0;
+        while(!q.isEmpty()) {
+            t++;
+            int k = K + t*(t+1)/2; // k = k + 1 + 2 + 3 ... 시간만큼 증가
+
+            if(k > 500000) {
+                return -1;
+            }
+
+            int idx = t%2; // 현재 시간 짝수? 홀수?
+            int size = q.size(); // 현재 큐 크기만큼 반복(같은 시간 k에 도달할 수 있는 모든 위치 처리)
+            for (int i = 0; i < size; i++) { // q.size()로 하면 q의 크기가 변동되기 때문에 오류
+                int cur = q.poll();
+
+                for (int nx : new int[]{cur - 1, cur + 1, cur * 2}) {
+                    if(nx < 0 || nx > 500000) continue;
+                    if(vis[idx][nx] != -1) continue;// 같은 홀짝 시간에 방문 확인
+                    vis[idx][nx] = t;
+                    q.offer(nx);
+                }
+
+            }
+
+            if(vis[idx][k] != -1 && vis[idx][k] <= t) return t;
+        }
+
+        return -1;
     }
 }
