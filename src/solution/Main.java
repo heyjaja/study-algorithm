@@ -5,48 +5,43 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        // https://www.acmicpc.net/problem/9466
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int N = Integer.parseInt(st.nextToken());
-        int K = Integer.parseInt(st.nextToken());
+        int T = Integer.parseInt(br.readLine()); // 테스트케이스
 
-        System.out.println(bfs(N, K));
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < T; i++) {
+            int n = Integer.parseInt(br.readLine()); // 학생 수
+            int[] students = new int[n+1];
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            for (int j = 1; j <= n; j++) {
+                students[j] = Integer.parseInt(st.nextToken());
+            }
+
+            sb.append(dfs(n, students)).append('\n');
+        }
+        System.out.println(sb);
     }
 
-    private static int bfs(int N, int K) {
-        int[][] vis = new int[2][500001]; // 홀수, 짝수로 나누어서 방문 표시 -> 수빈이가 +1 -1을 반복하면 같은 위치에 2초 간격(짝수, 홀수로)으로 도달. 중복을 줄이기 위함
-        for (int[] arr : vis) Arrays.fill(arr, -1);
-        Queue<Integer> q = new LinkedList<>();
-        vis[0][N] = 0; // 시작 위치 방문 표시
-        q.offer(N);
+    private static int dfs(int n, int[] students) {
+        int[] vis = new int[n+1]; // 0: 미방문, 1: 탐색 중, 2: 방문 완료
+        boolean[] inTeams = new boolean[n+1]; // 팀이 만들어진 학생
+        for (int i = 1; i < n + 1; i++) {
+            if(vis[i] == 2) continue;
+            Stack<Integer> s = new Stack<>();
+            vis[i] = 1;
+            s.push(i);
 
-        int t = 0;
-        while(!q.isEmpty()) {
-            t++;
-            int k = K + t*(t+1)/2; // k = k + 1 + 2 + 3 ... 시간만큼 증가
+            while(!s.isEmpty()) {
+                int cur = s.pop();
 
-            if(k > 500000) {
-                return -1;
-            }
-
-            int idx = t%2; // 현재 시간 짝수? 홀수?
-            int size = q.size(); // 현재 큐 크기만큼 반복(같은 시간 k에 도달할 수 있는 모든 위치 처리)
-            for (int i = 0; i < size; i++) { // q.size()로 하면 q의 크기가 변동되기 때문에 오류
-                int cur = q.poll();
-
-                for (int nx : new int[]{cur - 1, cur + 1, cur * 2}) {
-                    if(nx < 0 || nx > 500000) continue;
-                    if(vis[idx][nx] != -1) continue;// 같은 홀짝 시간에 방문 확인
-                    vis[idx][nx] = t;
-                    q.offer(nx);
+                int nx = students[cur];
+                if(vis[nx] == 1) {
+                    // 사이클 -> 사이클에 속한 학생을 모두 inTeams에 표시
                 }
-
             }
-
-            if(vis[idx][k] != -1 && vis[idx][k] <= t) return t;
         }
-
-        return -1;
+        return 0;
     }
 }
