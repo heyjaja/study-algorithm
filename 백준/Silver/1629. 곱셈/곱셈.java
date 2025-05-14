@@ -4,7 +4,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         // a^n * a^n = a^2n
-        // 12^58 mod 67 == 4 -> 12^116 mod 67 == 16
+        // 12^58 mod 67 == 4 -> 12^116 mod 67 == (4*4) mod 67 == 16
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         long A = Long.parseLong(st.nextToken());
