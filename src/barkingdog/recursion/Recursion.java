@@ -5,6 +5,9 @@ import java.io.InputStreamReader;
 import java.math.BigInteger;
 
 public class Recursion {
+    // 재귀의 조건
+    // 1. 특정 입력에 대해서는 자기 자신을 호출하지 않고 종료하는 조건(base condition)이 있어야 한다.
+    // 2. 모든 입력은 base condition으로 수렴해야 한다.
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
