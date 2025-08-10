@@ -1,52 +1,54 @@
 package solution;
 
-import java.io.*;
 import java.util.*;
+import java.io.*;
 
 public class Main {
-
-    static char[][] arr;
+    static int n, m;
+    static int[] inputs;
+    static int[] arr;
+    static boolean[] visits;
+    static StringBuilder sb;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
 
-        arr = new char[n][n];
-        func(0, 0, n, false);
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                sb.append(arr[i][j]);
-            }
-            sb.append('\n');
+        inputs = new int[n];
+        arr = new int[n];
+        visits = new boolean[n];
+        st = new StringTokenizer(br.readLine());
+
+        for(int i=0; i<n; i++) {
+            inputs[i] = Integer.parseInt(st.nextToken());
         }
-        System.out.println(sb);
+
+        sb = new StringBuilder();
+
+        Arrays.sort(inputs);
+        func(0);
+        System.out.print(sb);
     }
 
-    private static void func(int x, int y, int n, boolean isBlank) {
-        if(isBlank) {
-            for(int i = x; i < x + n; i++) {
-                for(int j = y; j < y + n; j++) {
-                    arr[i][j] = ' ';
-                }
+    public static void func(int a) {
+        if(a == m) {
+            for (int i = 0; i < m; i++) {
+                sb.append(arr[i]).append(' ');
             }
+            sb.append('\n');
             return;
         }
 
-        if(n == 1) {
-            arr[x][y] = '*';
-            return;
-        }
-
-        int size = n / 3;
-        int count = 0;
-
-        for (int i = x; i < x + n; i += size) {
-            for(int j = y; j < y+n; j += size) {
-                count++;
-                func(i, j, size, count == 5); // count == 5는 3x3의 가운데 칸 공백 여부
+        for(int i=0; i<n; i++) {
+            if(!visits[i]) {
+                arr[a] = inputs[i];
+                visits[i] = true;
+                func(a + 1);
+                visits[i] = false;
             }
-
         }
+
     }
 }
