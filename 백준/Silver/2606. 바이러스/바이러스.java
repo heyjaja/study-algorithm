@@ -2,27 +2,28 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static int[][] arr;
+    static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
     static boolean[] visited;
-    static int n;
-    static int m;
     static int count = 0;
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        n = Integer.parseInt(br.readLine());
-        m  = Integer.parseInt(br.readLine());
+        int n = Integer.parseInt(br.readLine());
+        int m  = Integer.parseInt(br.readLine());
 
-        arr = new int[n+1][n+1];
         visited = new boolean[n+1];
+
+        for(int i=0; i<=n; i++) {
+            graph.add(new ArrayList<>());
+        }
 
         StringTokenizer st;
         for(int i=0; i<m; i++) {
             st =  new StringTokenizer(br.readLine());
             int a =  Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
-            arr[a][b] = 1;
-            arr[b][a] = 1;
+            graph.get(a).add(b);
+            graph.get(b).add(a);
         }
 
         visited[1] = true;
@@ -32,13 +33,11 @@ public class Main {
     }
 
     private static void dfs(int a) {
-        for(int i=1; i<=n; i++) {
-            if(arr[a][i] == 1) {
-                if(visited[i]) continue;
-                visited[i] = true;
-                count++;
-                dfs(i);
-            }
+        for (Integer i : graph.get(a)) {
+            if(visited[i]) continue;
+            visited[i] = true;
+            count++;
+            dfs(i);
         }
     }
 }
