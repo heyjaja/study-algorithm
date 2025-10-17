@@ -4,51 +4,47 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-    static int n, m;
-    static int[] inputs;
-    static int[] arr;
-    static boolean[] visits;
-    static StringBuilder sb;
+    static ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+    static boolean[] visited;
+    static int count;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        n = Integer.parseInt(st.nextToken());
-        m = Integer.parseInt(st.nextToken());
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
 
-        inputs = new int[n];
-        arr = new int[n];
-        visits = new boolean[n];
-        st = new StringTokenizer(br.readLine());
+        visited = new boolean[n+1];
 
-        for(int i=0; i<n; i++) {
-            inputs[i] = Integer.parseInt(st.nextToken());
+        for(int i=0; i<=n; i++) {
+            list.add(new ArrayList<>());
         }
 
-        sb = new StringBuilder();
+        for(int i=0; i<m; i++) {
+            st = new StringTokenizer(br.readLine());
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+            list.get(a).add(b);
+            list.get(b).add(a);
+        }
 
-        Arrays.sort(inputs);
-        func(0);
-        System.out.print(sb);
+        for(int i=1; i<=n; i++) {
+            if(!visited[i]) {
+                visited[i] = true;
+                dfs(i);
+                count++;
+            }
+        }
+
+        System.out.println(count);
     }
 
-    public static void func(int a) {
-        if(a == m) {
-            for (int i = 0; i < m; i++) {
-                sb.append(arr[i]).append(' ');
-            }
-            sb.append('\n');
-            return;
-        }
-
-        for(int i=0; i<n; i++) {
-            if(!visits[i]) {
-                arr[a] = inputs[i];
-                visits[i] = true;
-                func(a + 1);
-                visits[i] = false;
+    private static void dfs(int a) {
+        for(Integer b : list.get(a)) {
+            if(!visited[b]) {
+                visited[b] = true;
+                dfs(b);
             }
         }
-
     }
 }
